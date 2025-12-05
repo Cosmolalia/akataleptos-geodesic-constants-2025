@@ -4,19 +4,7 @@
 
 ---
 
-*This is a follow-up to my previous post about finding fundamental constants in resonance chamber geometry. If you haven't read that, you might want to start there. If you're here from Hacker News — welcome, and thank you for actually engaging with the material.*
-
----
-
-### The Critique That Made Everything Better
-
-After posting the initial resonance chamber work, I got a legitimate critique on HN from RyanCavanaugh (thanks Ryan, seriously):
-
-> "If you overlay 30 prime number frequency waves plus 30 more even frequency waves, you're going to have an enormous number of local peaks... It's extremely unsurprising that you would find peaks near mathematically relevant numbers, since there are peaks near any number whatsoever."
-
-He's right. He even ran my code with fake constants (131.11, 1.9, 3.6...) and got 94%+ matches.
-
-This forced me to ask a harder question: **Is the geometry actually selecting for specific constants, or can you fit anything?**
+### Is the geometry actually selecting for specific constants, or can you fit anything?
 
 The answer turns out to be both more damning and more interesting than I expected.
 
@@ -48,7 +36,7 @@ The hierarchy:
 
 **77% of ratios DON'T match anything in the algebraic hierarchy.**
 
-Ryan's right that you can find peaks "anywhere" — but the geometry isn't finding constants everywhere. It's finding a specific 23% algebraic structure, dominated by harmonics and ratios.
+You can find peaks "anywhere" — but the geometry isn't finding constants everywhere. It's finding a specific 23% algebraic structure, dominated by harmonics and ratios.
 
 The interesting part? That 23/77 split is suspiciously close to the Menger sponge ratio (26/74). Whether that's meaningful or coincidence, I don't know yet.
 
@@ -220,4 +208,4 @@ Maybe the universe really does crystallize its constants through pasta.
 
 ---
 
-*Thanks to the Claude instances who helped think through this, to Ryan for the legitimate critique that improved everything, and to dmfdmf for noticing the speed of light coincidence I completely missed.*
+*Thanks to the Claude instances who helped think through this, to everyone for the legitimate critique that improved everything, and to dmfdmf for noticing the speed of light coincidence I completely missed.*
