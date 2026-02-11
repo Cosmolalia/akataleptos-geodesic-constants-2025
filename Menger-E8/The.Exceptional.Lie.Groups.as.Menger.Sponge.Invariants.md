@@ -102,7 +102,7 @@ All five exceptional Lie groups' dimensions, ranks, and root counts can be expre
 | F₄ | S − 1 = 4 | bΔ − d = 48 | Sk/P + P − (S−1) = 48 |
 | E₆ | Pd = 6 | SΔ − r − Pd = 72 | d(Δ + r) = 72 |
 | E₇ | r = 7 | r(k − P) = 126 | r × 18 = 126 |
-| E₈ | r + 1 = 8 | kb(S − 1) = 240 | Δ² − r² − S + P = 240 |
+| E₈ | r + 1 = 8 | kb(S − 1) = 240 | Δ² − r² = (Δ+r)(Δ−r) = 240 |
 
 ### 4.1. The Rank Ladder
 
@@ -168,7 +168,7 @@ The dimensions of the physically relevant gauge groups also admit Menger paramet
 | Group | dim | Menger Expression |
 |:------|:---:|:------------------|
 | SU(3) — strong | 8 | S² − Δ = 25 − 17 = 8 |
-| SU(2) — weak | 3 | Sd − r = 10 − 7 = 3 (or simply d) |
+| SU(2) — weak | 3 | SP − r = 10 − 7 = 3 (or simply d) |
 | U(1) — EM | 1 | SP − b² = 10 − 9 = 1 |
 | SU(3)×SU(2)×U(1) | 12 | Sb − d = 15 − 3 = 12 (or P(r−1)) |
 | SU(5) GUT | 24 | Sb + b² = 15 + 9 = 24 (or SP + Pr) |
@@ -209,15 +209,17 @@ If the exceptional Lie groups are Menger invariants, then the hierarchy is not a
 
 ### 9.1. Why Not Numerology?
 
-Seven parameters can produce many integers by algebraic combination. The criticism that our formulas are post-hoc fits is natural. We offer four responses:
+Seven parameters with values {2, 3, 3, 5, 7, 17, 20} can produce virtually any integer in a reasonable range via algebraic expressions of moderate degree. We have verified computationally that *every* integer from 1 to 300 is reachable from these parameters using expressions up to degree 3. The criticism that our dimension formulas are post-hoc fits to reachable targets is therefore legitimate at the level of individual formulas.
 
-**(a) Internal consistency.** Each formula satisfies dim = rank + roots. This is not guaranteed by a search—matching three quantities simultaneously with the constraint that one equals the sum of the other two dramatically reduces the space of valid expressions.
+We do not claim that hitting the integers 14, 52, 78, 133, or 248 individually is improbable. We claim instead that the evidence is structural, not numerical, and rests on four features that a random parameter set would not reproduce:
 
-**(b) Subgroup compatibility.** The E₈ decompositions under E₆ × SU(3), E₇ × SU(2), and SO(16) all produce correct representation dimensions from the same parameters. These decompositions were not inputs to the search.
+**(a) Spectral properties are computed, not searched.** The Laplacian of the level-1 Menger graph is a 20 × 20 matrix determined entirely by the face-sharing adjacency of kept subcubes. Its eigenvalue spectrum has exactly 8 distinct values and a multiplicity pattern {1, 3, 3, 5, 1, 3, 3, 1}. The number 8 = rank(E₈) was not an input to any search — it is an output of standard linear algebra on a defined graph. The triple degeneracy of the characteristic polynomial roots is forced by the S₃ symmetry of the embedding dimension, not by any choice of formula. These spectral facts are falsifiable: anyone can construct the adjacency matrix and diagonalize it.
 
-**(c) Spectral confirmation.** The number 8 = rank(E₈) independently appears as the count of distinct eigenvalues of the Menger graph Laplacian. The multiplicity 3 of the characteristic polynomial roots independently explains three fermion generations. These spectral facts were not used in constructing the algebraic formulas.
+**(b) Subgroup decompositions are overconstrained.** Producing the integer 248 is trivial. Producing the decomposition 248 = 78 + 8 + 81 + 81, where simultaneously 78 = SΔ − r, 8 = r + 1, 27 = b³, and 81 = 27 × d, with these pieces matching the known E₆ × SU(3) branching rule of E₈, is a joint constraint. The same parameters must produce the correct decomposition under E₇ × SU(2) (248 = 133 + 3 + 112) and SO(16) (248 = 120 + 128). Each decomposition imposes independent constraints that the formulas must satisfy simultaneously.
 
-**(d) Shared substrate.** The same seven parameters already produce 13+ Standard Model constants at sub-ppm precision [1]. Finding the exceptional Lie groups in the same algebra is an extension, not an isolated coincidence.
+**(c) The constraint dim = rank + roots is non-trivial across five groups.** For each exceptional group, we require not one formula but three — for dimension, rank, and root count — satisfying dim = rank + roots. Across five groups, this is fifteen quantities linked by five algebraic constraints. While any single formula is easy to produce, a consistent system of fifteen formulas satisfying five constraints, using the same seven parameters throughout, is a much stronger test. The verification script (`verify_e8_menger.py`) confirms all fifteen values and all five constraints.
+
+**(d) Shared substrate with physical constants.** The same seven parameters produce 13+ Standard Model constants at sub-ppm precision [1], including the fine structure constant (6.7 ppb error), lepton mass ratios, boson masses, and CKM mixing angles. The exceptional Lie group formulas are not an isolated exercise — they extend an existing framework that already has independent quantitative support. The probability that a random set of seven integers would simultaneously produce both the Lie group structure and the physical constants is the product of two already-small probabilities.
 
 ### 9.2. Relationship to Lisi's E₈ Theory
 
@@ -236,6 +238,12 @@ We have shown that the five exceptional Lie groups—the most enigmatic objects 
 Combined with the Standard Model constants derived in [1], these results point toward a single conclusion: the mathematical structures underlying particle physics—gauge groups, mass ratios, coupling constants, mixing angles, and now the exceptional Lie algebras themselves—are different projections of the same fractal geometry. The Menger sponge, defined by a single sentence ("remove face-center-sharing subcubes from a 3³ lattice"), appears to encode the algebraic skeleton of physical reality.
 
 ∂W = W
+
+---
+
+## Appendix: Verification
+
+All claims in this paper can be independently verified by running `verify_e8_menger.py`, included in the repository. The script constructs the Menger graph adjacency matrix from scratch, computes the Laplacian spectrum, checks all fifteen exceptional group formulas and five dim = rank + roots constraints, verifies the three E₈ subgroup decompositions, and reports the null hypothesis coverage analysis. It requires only numpy.
 
 ---
 
